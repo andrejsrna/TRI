@@ -111,7 +111,7 @@ const FeaturesSection = () => {
         </div>
         {/* Feature 2 */}
         <div className="flex-1 text-center p-2">
-        <Image src="/Ikona2.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
+        <Image src="/ikona2.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
         <h3 className="text-2xl font-semibold mb-2">Budovanie infraštruktúry a technológií</h3>
           <p className="text-sm">
           Vytvárame moderné priestory pre prototypovanie a vývoj, vybavené 3D tlačiarňami, VR/AR riešeniami a ďalšími technológiami. Firmy tak získajú prístup k pokročilému vybaveniu priamo v regióne.
@@ -119,7 +119,7 @@ const FeaturesSection = () => {
         </div>
         {/* Feature 3 */}
         <div className="flex-1 text-center p-2">
-        <Image src="/Ikona3.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
+        <Image src="/ikona3.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Prepájanie partnerov a zdieľanie znalostí</h3>
           <p className="text-sm">
           Organizujeme networkingové podujatia, workshopy a programy zamerané na spoluprácu medzi firmami, školami a výskumnými inštitúciami. Zdieľame know-how a pomáhame vytvárať partnerstvá, ktoré posúvajú región dopredu.
