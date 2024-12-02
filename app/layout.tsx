@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 
 import "./globals.css";
 
 import { Button } from "@/components/ui/button";
 import { NavMenu } from "@/components/nav/nav-menu";
 import { MobileNav } from "@/components/nav/mobile-nav";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 import Logo from "@/public/logo.svg";
 
@@ -36,16 +34,9 @@ export default function RootLayout({
       <head />
       <body
         className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
         >
-          <Nav />
-          {children}
-        </ThemeProvider>
+        <Nav />
+        {children}
       </body>
     </html>
   );
@@ -65,11 +56,11 @@ const Nav = ({ className, children, id }: NavProps) => {
           className="hover:opacity-75 transition-all flex gap-2 items-center"
           href="/"
         >
-          <h2 className="sr-only">Craft UI</h2>
+          <h2 className="sr-only">Trnava Region Innovates</h2>
           <Image
             src={Logo}
             alt="Logo"
-            className="invert dark:invert-0"
+            className=""
             width={84}
             height={30.54}
           ></Image>
@@ -77,9 +68,8 @@ const Nav = ({ className, children, id }: NavProps) => {
         {children}
         <div className="flex items-center gap-2">
           <NavMenu />
-          <ThemeToggle />
-          <Button asChild className="hidden sm:flex">
-            <Link href="https://9d8.dev">Get Started</Link>
+          <Button asChild className="hidden rounded-full bg-blue-300 hover:bg-blue-400 text-white hover:text-grey-100 sm:flex">
+            <Link href="#mail">Chcem byť súčasťou</Link>
           </Button>
           <MobileNav />
         </div>
