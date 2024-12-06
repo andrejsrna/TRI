@@ -14,7 +14,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-const fontSans = localFont({
+const parkinsans = localFont({
   src: [
     {
       path: "../public/fonts/Parkinsans-Regular.woff2",
@@ -37,12 +37,12 @@ const fontSans = localFont({
       style: "normal",
     }
   ],
-  variable: "--font-sans",
+  variable: "--font-parkinsans",
 });
 
-const parkinsons = localFont({
-  src: "../public/fonts/Parkinsans-Regular.woff2",
-  variable: "--font-parkinsons",
+const barlow = localFont({
+  src: "../public/fonts/Barlow-Light.woff2",
+  variable: "--font-barlow",
 });
 
 export const metadata: Metadata = {
@@ -60,8 +60,9 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen antialiased font-sans",
-          fontSans.variable
+          "min-h-screen antialiased",
+          barlow.variable,
+          parkinsans.variable
         )}
       >
         <Nav />
@@ -74,7 +75,7 @@ export default function RootLayout({
 const Nav = ({ className, children, id }: NavProps) => {
   return (
     <nav
-      className={cn("sticky z-50 top-0 bg-background", "border-b", className)}
+      className={cn("sticky z-50 top-0 bg-background font-parkinsans", className)}
       id={id}
     >
       <div
@@ -85,19 +86,19 @@ const Nav = ({ className, children, id }: NavProps) => {
           className="hover:opacity-75 transition-all flex gap-2 items-center"
           href="/"
         >
-          <h2 className="sr-only">Trnava Region Innovates</h2>
+          <h2 className="sr-only font-parkinsans">Trnava Region Innovates</h2>
           <Image
-            src={Logo}
+            src="/logo.png"
             alt="Logo"
             className=""
-            width={84}
-            height={30.54}
+            width={190}
+            height={55}
           ></Image>
         </Link>
         {children}
         <div className="flex items-center gap-2">
           <NavMenu />
-          <Button asChild className="hidden rounded-full bg-blue-300 hover:bg-blue-600 text-white hover:text-grey-100 sm:flex">
+          <Button asChild className="hidden rounded-full bg-primary text-white hover:text-grey-100 sm:flex font-parkinsans">
             <Link href="#mail">Chcem byť súčasťou</Link>
           </Button>
           <MobileNav />
