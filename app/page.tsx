@@ -63,7 +63,7 @@ const HeroSection = () => {
       {/* Left Text Section */}
       <div className="flex-1 text-left">
         <h1 className="text-4xl font-bold mb-4">
-          <Balancer>Trnava Region Innovates</Balancer>
+          <Balancer className="font-black">Trnava Region Innovates</Balancer>
         </h1>
         <p>
         Budujeme inovačný ekosystém Trnavského kraja, ktorý podporuje zelenú, digitálnu a udržateľnú transformáciu. Prepájame verejný, akademický a podnikateľský sektor, aby sme priniesli nové technológie a príležitosti pre región.</p>
@@ -100,7 +100,7 @@ const FeaturesSection = () => {
       <h2 className="text-3xl font-bold text-center mb-12">
       <b>Bude</b> súčasťou projektu:
       </h2>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-16">
         {/* Feature 1 */}
         <div className="flex-1 text-center p-2">
           <Image src="/Ikona1.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />

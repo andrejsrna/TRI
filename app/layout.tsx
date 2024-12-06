@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
 
@@ -14,9 +14,35 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+const fontSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/Parkinsans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Parkinsans-Medium.woff2", 
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Parkinsans-Bold.woff2",
+      weight: "700", 
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Parkinsans-ExtraBold.woff2",
+      weight: "900", 
+      style: "normal",
+    }
+  ],
   variable: "--font-sans",
+});
+
+const parkinsons = localFont({
+  src: "../public/fonts/Parkinsans-Regular.woff2",
+  variable: "--font-parkinsons",
 });
 
 export const metadata: Metadata = {
@@ -33,8 +59,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={cn("min-h-screen font-sans antialiased", fontSans.variable)}
-        >
+        className={cn(
+          "min-h-screen antialiased font-sans",
+          fontSans.variable
+        )}
+      >
         <Nav />
         {children}
       </body>
@@ -68,7 +97,7 @@ const Nav = ({ className, children, id }: NavProps) => {
         {children}
         <div className="flex items-center gap-2">
           <NavMenu />
-          <Button asChild className="hidden rounded-full bg-blue-300 hover:bg-blue-400 text-white hover:text-grey-100 sm:flex">
+          <Button asChild className="hidden rounded-full bg-blue-300 hover:bg-blue-600 text-white hover:text-grey-100 sm:flex">
             <Link href="#mail">Chcem byť súčasťou</Link>
           </Button>
           <MobileNav />

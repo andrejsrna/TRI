@@ -29,7 +29,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section id="mail" className="py-16">
+    <section id="mail" className="py-16 relative overflow-y-clip">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold mb-4">Poďte s nami spolupracovať</h2>
         <p className="text-gray-600 mb-8">
@@ -80,6 +80,12 @@ export const Newsletter = () => {
         </label>
       </div>
       </form>
+      <div className="absolute -z-10 -left-96 top-100 w-full h-0 hidden md:block" style={{ margin: 0, padding: 0 }}>
+            <div className="w1 h-1 relative top-32 left-10 bg-gradient-to-r from-[rgba(0,123,255,1)] to-[rgba(0,20,84,1)] transform rotate-45"></div>
+            <div className="w2 relative top-20 -left-40 h-1 bg-gradient-to-r from-[rgba(0,123,255,1)] to-[rgba(0,20,84,1)] transform rotate-45 mt-16"></div>
+            <div className="w2 relative top-20 -left-48 h-1 bg-gradient-to-r from-[rgba(0,123,255,1)] to-[rgba(0,20,84,1)] transform rotate-45 mt-16"></div>
+            <div className="w1 relative top-20 -left-40 h-1 bg-gradient-to-r from-[rgba(0,123,255,1)] to-[rgba(0,20,84,1)] transform rotate-45 mt-16"></div>
+      </div>
     </section>
   );
 };
