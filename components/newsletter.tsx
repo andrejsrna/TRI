@@ -15,18 +15,17 @@ export const Newsletter = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + btoa('anystring:c32294fff5c8c728f16f48308698e690-us21')
         },
         body: JSON.stringify({ 
           email_address: email,
           status: 'subscribed',
-          tags: ['tregino'] // Add custom tag
+          tags: ['tregino']
         }),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.message || 'Subscription failed');
+        throw new Error(error.error || 'Subscription failed');
       }
       
       setStatus('success');
