@@ -15,16 +15,25 @@ export const Newsletter = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa('anystring:c32294fff5c8c728f16f48308698e690-us21')
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ 
+          email_address: email,
+          status: 'subscribed',
+          tags: ['tregino'] // Add custom tag
+        }),
       });
 
-      if (!response.ok) throw new Error('Subscription failed');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Subscription failed');
+      }
       
       setStatus('success');
       setEmail('');
     } catch (error) {
-      setStatus('error');
+      console.error('Newsletter subscription error:', error);
+      setStatus('error'); 
     }
   };
 

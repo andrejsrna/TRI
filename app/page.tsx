@@ -72,7 +72,7 @@ const HeroSection = () => {
         Budujeme inovačný ekosystém Trnavského kraja, ktorý podporuje zelenú, digitálnu a udržateľnú transformáciu. Prepájame verejný, akademický a podnikateľský sektor, aby sme priniesli nové technológie a príležitosti pre región.</p>
         <div className="flex mt-16 flex-col gap-4">
           <div>
-            <Button asChild className="rounded-full btnfix mb-16 text-white prose-color:m-0 bg-primary font-barlow">
+            <Button asChild className="rounded-full btnfix mb-16 text-white prose-color:m-0 bg-primary font-parkinsans">
               <Link className="color-white" href="#mail">Chcem byť súčasťou</Link>
             </Button>
           </div>

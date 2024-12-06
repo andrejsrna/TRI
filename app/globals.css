@@ -143,3 +143,8 @@ html {
 .font-barlow {
   font-family: var(--font-barlow);
 }
+@media only screen and (max-width: 768px) {
+  .before\:top-0:before, .after\:top-0:after {
+    display:none;
+  }
+}
