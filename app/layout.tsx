@@ -80,7 +80,7 @@ const Nav = ({ className, children, id }: NavProps) => {
     >
       <div
         id="nav-container"
-        className="max-w-5xl mx-auto py-4 px-6 sm:px-8 flex justify-between items-center"
+        className="max-w-7xl mx-auto py-4 px-6 sm:px-8 flex justify-between items-center"
       >
         <Link
           className="hover:opacity-75 transition-all flex gap-2 items-center"
@@ -91,7 +91,7 @@ const Nav = ({ className, children, id }: NavProps) => {
             src="/logo.png"
             alt="Logo"
             className=""
-            width={190}
+            width={150}
             height={55}
           ></Image>
         </Link>

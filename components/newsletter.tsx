@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
+import Balancer from 'react-wrap-balancer';
+import Link from 'next/link';
+
 export const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -46,7 +49,9 @@ export const Newsletter = () => {
           height={72}
           className="mx-auto mb-8"
         />
-        <h2 className="text-3xl font-bold mb-4">Poďte s nami spolupracovať</h2>
+        <h2 className="text-4xl text-center font-bold pb-4 font-parkinsans leading-3 mt-0">
+          <Balancer className="font-black">Poďte s nami <span className="text-primary">spolupracovať</span></Balancer>
+        </h2>
         <p className="text-gray-600 mb-8">
         Či ste firma, organizácia, alebo jednotlivec, vaše nápady môžu byť súčasťou veľkých zmien. Zapojením do Trnava Region Innovates získate prístup k moderným technológiám, odborným znalostiam a možnosť formovať inovácie v regióne
         </p>
@@ -60,15 +65,15 @@ export const Newsletter = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Vaša emailová adresa"
             required
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-4 text-sm py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <Button 
-            type="submit"
-            disabled={status === 'loading'}
-            className="relative top-1 font-bold uppercase bg-transparent border-none text-lg underline hover:bg-transparent text-primary"
-          >
-            {status === 'loading' ? 'Registrovanie...' : 'Odoslať'}
-          </Button>
+
+          <Button type="submit"             
+          disabled={status === 'loading'}
+          asChild className="rounded-full btnfix text-white prose-color:m-0 bg-primary font-parkinsans">
+              <Link className="color-white" href="#mail">            {status === 'loading' ? 'Registrovanie...' : 'Odoslať'}
+              </Link>
+            </Button>
         </div>
         
         {status === 'success' && (

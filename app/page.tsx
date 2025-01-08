@@ -62,13 +62,13 @@ export default function Home() {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+    <div className="flex flex-col md:flex-row items-center mb-16 justify-between gap-8">
       {/* Left Text Section */}
       <div className="flex-1 text-left">
-        <h1 className="text-4xl font-bold mb-4 font-parkinsans">
+        <h1 className="text-4xl font-bold mb-4 font-parkinsans leading-tight">
           <Balancer className="font-black">Trnava Region <span className="text-primary">Innovates</span></Balancer>
         </h1>
-        <p className="font-barlow">
+        <p className="font-barlow leading-tight leading-3">
         Budujeme inovačný ekosystém Trnavského kraja, ktorý podporuje zelenú, digitálnu a udržateľnú transformáciu. Prepájame verejný, akademický a podnikateľský sektor, aby sme priniesli nové technológie a príležitosti pre región.</p>
         <div className="flex mt-16 flex-col gap-4">
           <div>
@@ -114,7 +114,7 @@ const HeroSection = () => {
 // Features Section Component
 const FeaturesSection = () => {
   return (
-    <section className="mb-16">
+    <section>
       <h2 className="text-3xl font-bold text-center mb-12 font-parkinsans">
       <b>Bude</b> súčasťou projektu:
       </h2>
@@ -151,10 +151,10 @@ const FeaturesSection = () => {
 // Divider Section Component
 const DividerSection = () => {
   return (
-    <section className="py-16">
-      <div className="flex justify-center mb-16">
-        <Image src="/divider.svg" alt="Divider" width={72} height={24} />
-      </div>
+    <section className="mb-16">
+      <h2 className="text-4xl text-center font-bold pb-16 font-parkinsans leading-3 mt-0">
+          <Balancer className="font-black">Staňte sa našimi <span className="text-primary">partnermi</span></Balancer>
+        </h2>
       <div className="flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 relative h-[450px]">
         <Image
@@ -193,9 +193,9 @@ const DividerSection = () => {
 // Stats Section Component
 const StatsSection = () => {
   return (
-<section className="bg-primary text-white py-16 relative">
+<section className="bg-primary text-white py-4 relative">
   <Container>
-    <div className="flex flex-col md:flex-row relative h-full w-full">
+    <div className="flex leading-tight flex-col md:flex-row relative h-full w-full">
       {/* Stat 1 */}
       <div className="flex-1 centered px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white">
         <div className="text-6xl center mb-4 font-bold font-parkinsans">
