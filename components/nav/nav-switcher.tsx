@@ -18,16 +18,28 @@ const LanguageContext = createContext<{
 export const useLanguage = () => useContext(LanguageContext);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
+  // Initialize with SK to match server rendering
   const [language, setLanguage] = useState('sk');
   const [translations, setTranslations] = useState<Translations>(sk);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const savedLang = localStorage.getItem('language');
     if (savedLang) {
       setLanguage(savedLang);
       setTranslations(savedLang === 'sk' ? sk : en);
     }
   }, []);
+
+  // Don't render children until we've checked localStorage
+  if (!isClient) {
+    return (
+      <LanguageContext.Provider value={{ language: 'sk', t: sk, toggleLanguage: () => {} }}>
+        {children}
+      </LanguageContext.Provider>
+    );
+  }
 
   const toggleLanguage = () => {
     const newLang = language === 'sk' ? 'en' : 'sk';

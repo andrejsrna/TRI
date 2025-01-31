@@ -128,8 +128,8 @@ const FeaturesSection = () => {
         {t.features.cards.map((card, index) => (
           <div key={index} className="flex-1 text-center p-2">
             <Image 
-              src={`/Ikona${index + 1}.svg`} 
-              alt="Innovation Icon" 
+              src={`/ikona${index + 1}.svg`}
+              alt={`Innovation Icon ${index + 1}`}
               width={150} 
               height={150} 
               className="mx-auto mb-4" 
