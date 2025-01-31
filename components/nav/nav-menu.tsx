@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
+import { useLanguage } from '@/components/nav/nav-switcher';
 
 import {
   NavigationMenu,
@@ -54,13 +54,15 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function NavMenu() {
+  const { t } = useLanguage();
+  
   return (
     <NavigationMenu className="hidden md:block max-w-7xl mx-auto">
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              O projekte
+              {t.menu.about}
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

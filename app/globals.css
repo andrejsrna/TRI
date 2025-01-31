@@ -148,3 +148,17 @@ html {
     display:none;
   }
 }
+
+/* Hide Google Translate widget */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-menu-value:hover {
+  text-decoration: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

@@ -7,6 +7,7 @@ import "./globals.css";
 import { useEffect, useState } from 'react';
 import Newsletter from "@/components/newsletter";
 import Image from "next/image";
+import { useLanguage } from "@/components/nav/nav-switcher";
 
 const CountUp = ({ end, duration = 5000, suffix = '' }: { end: number; duration?: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -61,19 +62,22 @@ export default function Home() {
 
 // Hero Section Component
 const HeroSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="flex flex-col md:flex-row items-center mb-16 justify-between gap-8">
       {/* Left Text Section */}
       <div className="flex-1 text-left">
         <h1 className="text-4xl font-bold mb-4 font-parkinsans leading-tight">
-          <Balancer className="font-black">Trnava Region <span className="text-primary">Innovates</span></Balancer>
+          <Balancer className="font-black">{t.hero.title} <span className="text-primary">Innovates</span></Balancer>
         </h1>
         <p className="font-barlow leading-tight leading-3">
-        Budujeme inovačný ekosystém Trnavského kraja, ktorý podporuje zelenú, digitálnu a udržateľnú transformáciu. Prepájame verejný, akademický a podnikateľský sektor, aby sme priniesli nové technológie a príležitosti pre región.</p>
+          {t.hero.description}
+        </p>
         <div className="flex mt-16 flex-col gap-4">
           <div>
             <Button asChild className="rounded-full btnfix mb-16 text-white prose-color:m-0 bg-primary font-parkinsans">
-              <Link className="color-white" href="#mail">Chcem byť súčasťou</Link>
+              <Link className="color-white" href="#mail">{t.hero.cta}</Link>
             </Button>
           </div>
           <Image 
@@ -113,36 +117,27 @@ const HeroSection = () => {
 
 // Features Section Component
 const FeaturesSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section>
       <h2 className="text-3xl font-bold text-center mb-12 font-parkinsans">
-      <b>Bude</b> súčasťou projektu:
+        <b>{t.features.title}</b>
       </h2>
       <div className="flex flex-col md:flex-row gap-16">
-        {/* Feature 1 */}
-        <div className="flex-1 text-center p-2">
-          <Image src="/Ikona1.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
-          <h3 className="text-2xl font-semibold mb-2 font-parkinsans">Mapovanie a plánovanie inovácií</h3>
-          <p className="text-sm font-barlow">
-          Pomáhame firmám a organizáciám identifikovať nové príležitosti v oblasti inovácií prostredníctvom analýzy dát, trendov a regionálnych potrieb. Spoločne plánujeme strategické kroky na podporu technologického rozvoja.
-          </p>
-        </div>
-        {/* Feature 2 */}
-        <div className="flex-1 text-center p-2">
-        <Image src="/ikona2.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
-        <h3 className="text-2xl font-semibold mb-2 font-parkinsans">Budovanie infraštruktúry a technológií</h3>
-          <p className="text-sm font-barlow">
-          Vytvárame moderné priestory pre prototypovanie a vývoj, vybavené 3D tlačiarňami, VR/AR riešeniami a ďalšími technológiami. Firmy tak získajú prístup k pokročilému vybaveniu priamo v regióne.
-          </p>
-        </div>
-        {/* Feature 3 */}
-        <div className="flex-1 text-center p-2">
-        <Image src="/ikona3.svg" alt="Innovation Icon" width={150} height={150} className="mx-auto mb-4" />
-          <h3 className="text-2xl font-semibold mb-2 font-parkinsans">Prepájanie partnerov a zdieľanie znalostí</h3>
-          <p className="text-sm font-barlow">
-          Organizujeme networkingové podujatia, workshopy a programy zamerané na spoluprácu medzi firmami, školami a výskumnými inštitúciami. Zdieľame know-how a pomáhame vytvárať partnerstvá, ktoré posúvajú región dopredu.
-          </p>
-        </div>
+        {t.features.cards.map((card, index) => (
+          <div key={index} className="flex-1 text-center p-2">
+            <Image 
+              src={`/Ikona${index + 1}.svg`} 
+              alt="Innovation Icon" 
+              width={150} 
+              height={150} 
+              className="mx-auto mb-4" 
+            />
+            <h3 className="text-2xl font-semibold mb-2 font-parkinsans">{card.title}</h3>
+            <p className="text-sm font-barlow">{card.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -150,39 +145,31 @@ const FeaturesSection = () => {
 
 // Divider Section Component
 const DividerSection = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="mb-16">
       <h2 className="text-4xl text-center font-bold pb-16 font-parkinsans leading-3 mt-0">
-          <Balancer className="font-black">Staňte sa našimi <span className="text-primary">partnermi</span></Balancer>
-        </h2>
+        <Balancer className="font-black">{t.partners.title}</Balancer>
+      </h2>
       <div className="flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 relative h-[450px]">
-        <Image
-    src="/obr1.jpg"
-    alt="Innovation Hub"
-    layout="fill" // Use Next.js layout prop for responsive images
-    className="rounded-lg fiximg my-0 object-cover"
-    style={{ objectFit: 'cover' }}
-  />
+          <Image
+            src="/obr1.jpg"
+            alt="Innovation Hub"
+            layout="fill"
+            className="rounded-lg fiximg my-0 object-cover"
+            style={{ objectFit: 'cover' }}
+          />
         </div>
         <div className="flex-1">
           <div className="space-y-4 font-barlow">
-            <p className="text-lg">
-              <strong className="font-parkinsans">Firmy:</strong><br/>
-              Staňte sa súčasťou siete inovácií. Objavte nové technológie, získajte prístup k talentom a posuňte svoje produkty na vyššiu úroveň.
-            </p>
-            <p className="text-lg">
-              <strong className="font-parkinsans">Školy a univerzity:</strong><br/>
-              Využite naše vybavenie a prepojte teóriu s praxou. Pripravte svojich študentov na úspešnú kariéru v inovačných odboroch.
-            </p>
-            <p className="text-lg">
-              <strong className="font-parkinsans">Mestá a obce:</strong><br/>
-              Spolupracujte na riešeniach, ktoré zlepšia kvalitu života vo vašej komunite. Podporte udržateľnosť a rozvoj vášho regiónu.
-            </p>
-            <p className="text-lg">
-              <strong className="font-parkinsans">Mladí ľudia:</strong><br/>
-              Zapojte sa do reálnych projektov, rozvíjajte svoje zručnosti a tvorte budúcnosť inovácií v regióne.
-            </p>
+            {Object.entries(t.partners.sections).map(([key, section]) => (
+              <p key={key} className="text-lg">
+                <strong className="font-parkinsans">{section.title}:</strong><br/>
+                {section.description}
+              </p>
+            ))}
           </div>
         </div>
       </div>
@@ -192,38 +179,35 @@ const DividerSection = () => {
 
 // Stats Section Component
 const StatsSection = () => {
-  return (
-<section className="bg-primary text-white py-4 relative">
-  <Container>
-    <div className="flex leading-tight flex-col md:flex-row relative h-full w-full">
-      {/* Stat 1 */}
-      <div className="flex-1 centered px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white">
-        <div className="text-6xl center mb-4 font-bold font-parkinsans">
-          <CountUp end={6} duration={2500} suffix="+" />
-        </div>
-        <div className="text-xl font-bold mb-8 animate-bounce font-parkinsans">milónov</div>
-        <p className="text-center font-barlow">Rozpočet projektu na rozvoj inovácií</p>
-      </div>
-      {/* Stat 2 */}
-      <div className="flex-1 px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white">
-        <div className="text-6xl mb-4 font-bold font-parkinsans">
-          <CountUp end={63} duration={2000} />
-        </div>
-        <div className="text-xl mb-8 font-bold animate-bounce font-parkinsans">mesiacov</div>
-        <p className="text-center font-barlow">Trvanie projektu od roku 2024 do 2029</p>
-      </div>
-      {/* Stat 3 */}
-      <div className="flex-1 px-8 py-8 flex flex-col  items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white">
-        <div className="text-6xl font-bold mb-4 font-parkinsans">
-          <CountUp end={50} duration={2300} suffix="+" />
-        </div>
-        <div className="text-xl font-bold animate-bounce mb-8 center text-center font-parkinsans">partnerov</div>
-        <p className="text-center font-barlow">Prepojenie verejného, akademického a podnikateľského sektora</p>
-      </div>
-    </div>
-  </Container>
-</section>
-
+  const { t } = useLanguage();
   
+  return (
+    <section className="bg-primary text-white py-4 relative">
+      <Container>
+        <div className="flex leading-tight flex-col md:flex-row relative h-full w-full">
+          <div className="flex-1 centered px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white">
+            <div className="text-6xl center mb-4 font-bold font-parkinsans">
+              <CountUp end={6} duration={2500} suffix="+" />
+            </div>
+            <div className="text-xl font-bold mb-8 animate-bounce font-parkinsans">{t.stats.millions}</div>
+            <p className="text-center font-barlow">{t.stats.descriptions.budget}</p>
+          </div>
+          <div className="flex-1 px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white">
+            <div className="text-6xl mb-4 font-bold font-parkinsans">
+              <CountUp end={63} duration={2000} />
+            </div>
+            <div className="text-xl mb-8 font-bold animate-bounce font-parkinsans">{t.stats.months}</div>
+            <p className="text-center font-barlow">{t.stats.descriptions.duration}</p>
+          </div>
+          <div className="flex-1 px-8 py-8 flex flex-col items-center relative before:content-[''] before:absolute before:top-0 before:left-0 before:bottom-0 before:w-px before:bg-white after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white">
+            <div className="text-6xl font-bold mb-4 font-parkinsans">
+              <CountUp end={50} duration={2300} suffix="+" />
+            </div>
+            <div className="text-xl font-bold animate-bounce mb-8 center text-center font-parkinsans">{t.stats.partners}</div>
+            <p className="text-center font-barlow">{t.stats.descriptions.collaboration}</p>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 };

@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-
 import "./globals.css";
-
-import { Button } from "@/components/ui/button";
-import { NavMenu } from "@/components/nav/nav-menu";
-import { MobileNav } from "@/components/nav/mobile-nav";
-
-import Logo from "@/public/logo.svg";
-
-import Image from "next/image";
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
+import { LanguageProvider } from "@/components/nav/nav-switcher";
+import { Nav } from "@/components/nav/nav";
 
 const parkinsans = localFont({
   src: [
@@ -65,45 +56,11 @@ export default function RootLayout({
           parkinsans.variable
         )}
       >
-        <Nav />
-        {children}
+        <LanguageProvider>
+          <Nav />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
 }
-
-const Nav = ({ className, children, id }: NavProps) => {
-  return (
-    <nav
-      className={cn("sticky z-50 top-0 bg-background font-parkinsans", className)}
-      id={id}
-    >
-      <div
-        id="nav-container"
-        className="max-w-7xl mx-auto py-4 px-6 sm:px-8 flex justify-between items-center"
-      >
-        <Link
-          className="hover:opacity-75 transition-all flex gap-2 items-center"
-          href="/"
-        >
-          <h2 className="sr-only font-parkinsans">Trnava Region Innovates</h2>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            className=""
-            width={150}
-            height={55}
-          ></Image>
-        </Link>
-        {children}
-        <div className="flex items-center gap-2">
-          <NavMenu />
-          <Button asChild className="hidden rounded-full bg-primary text-white hover:text-grey-100 sm:flex font-parkinsans">
-            <Link href="#mail">Chcem byť súčasťou</Link>
-          </Button>
-          <MobileNav />
-        </div>
-      </div>
-    </nav>
-  );
-};
